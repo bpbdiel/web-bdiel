@@ -5,7 +5,7 @@ import { Menu, Moon, Sun, X } from '@lucide/vue'
 
 const links = [
   { label: 'Sobre mí', href: '#about' },
-  { label: 'hola', href: '#skills' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Experiencia', href: '#experience' },
   { label: 'Contacto', href: '#contact' },
