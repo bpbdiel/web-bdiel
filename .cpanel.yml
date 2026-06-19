@@ -3,7 +3,7 @@ deployment:
   tasks:
     - export REPOPATH=$PWD
     - export DEPLOYPATH=$HOME/public_html
-    - export NODEBIN=/opt/cpanel/ea-nodejs20/bin
+    - if [ -x /opt/cpanel/ea-nodejs22/bin/npm ]; then export NODEBIN=/opt/cpanel/ea-nodejs22/bin; else export NODEBIN=/opt/cpanel/ea-nodejs20/bin; fi
     - cd $REPOPATH
     - $NODEBIN/node --version
     - $NODEBIN/npm --version
