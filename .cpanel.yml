@@ -3,9 +3,12 @@ deployment:
   tasks:
     - export REPOPATH=$PWD
     - export DEPLOYPATH=$HOME/public_html
+    - export NODEBIN=/opt/cpanel/ea-nodejs20/bin
     - cd $REPOPATH
-    - /opt/cpanel/ea-nodejs20/bin/npm ci
-    - /opt/cpanel/ea-nodejs20/bin/npm run build
+    - $NODEBIN/node --version
+    - $NODEBIN/npm --version
+    - $NODEBIN/npm ci --include=dev
+    - NODE_ENV=production $NODEBIN/npm run build
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/find $DEPLOYPATH -mindepth 1 ! -name '.well-known' -exec /bin/rm -rf {} +
+    - /bin/find $DEPLOYPATH -maxdepth 1 -mindepth 1 ! -name '.well-known' -exec /bin/rm -rf {} +
     - /bin/cp -R dist/. $DEPLOYPATH/
