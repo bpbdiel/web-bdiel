@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export REPOPATH=$PWD
+    - export DEPLOYPATH=$HOME/public_html
+    - cd $REPOPATH
+    - /opt/cpanel/ea-nodejs20/bin/npm ci
+    - /opt/cpanel/ea-nodejs20/bin/npm run build
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/find $DEPLOYPATH -mindepth 1 ! -name '.well-known' -exec /bin/rm -rf {} +
+    - /bin/cp -R dist/. $DEPLOYPATH/
